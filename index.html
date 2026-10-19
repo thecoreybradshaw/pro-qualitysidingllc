@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro-Quality Siding LLC</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#1e3a8a',      // Blue 900
+                            blueBright: '#2563eb',// Blue 600
+                            green: '#059669',     // Emerald 600
+                            greenBright: '#10b981',// Emerald 500
+                            dark: '#0f172a',      // Slate 900
+                            muted: '#64748b',     // Slate 500
+                            border: '#e2e8f0',    // Slate 200
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        .btn-tap:active {
+            transform: scale(0.98);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brand-green selection:text-white pb-20 md:pb-0">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-brand-dark border border-slate-700 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 transition-all duration-300 opacity-0 pointer-events-none translate-y-[-20px] max-w-[90vw]">
+        <div class="w-7 h-7 rounded-full bg-brand-green text-white flex items-center justify-center shrink-0">
+            <i id="toast-icon" class="fa-solid fa-check text-xs"></i>
+        </div>
+        <span id="toast-msg" class="text-xs font-semibold text-slate-100">Action completed!</span>
+    </div>
+
+    <!-- Header / Brand Bar (Solid White) -->
+    <header class="bg-brand-blue border-b border-brand-border sticky top-0 z-40 shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+            <!-- Brand Logo & Name -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-white border border-blue-800 shadow-md">
+                    <i class="fa-solid fa-house-chimney text-brand-greenBright text-base"></i>
+                </div>
+                <div>
+                    <h1 class="text-base sm:text-lg font-black text-white tracking-tight uppercase leading-none">
+                        Pro-Quality <span class="text-brand-green">Siding, LLC.</span>
+                    </h1>
+                    <p class="text-[10px] sm:text-xs font-bold text-brand-green uppercase tracking-wider mt-0.5">
+                        Awnings • Screen Rooms • Siding
+                    </p>
+                </div>
+            </div>
+
+            <!-- Desktop Header Quick Buttons -->
+            <div class="hidden md:flex items-center justify-center gap-2.5">
+                <a href="tel:3345551234" class="btn-tap px-4 py-2 rounded-xl bg-brand-green hover:bg-emerald-700 text-white font-extrabold text-xs uppercase tracking-wider shadow-md shadow-brand-green/20 flex items-center gap-2 transition-all">
+                    <i class="fa-solid fa-phone text-xs"></i>
+                    <span>(334) 555-1234</span>
+                </a>
+                <a href="#contact-section" class="btn-tap px-4 py-2 rounded-xl bg-brand-blue hover:bg-blue-900 text-white font-extrabold text-xs uppercase tracking-wider flex items-center gap-2 transition-all">
+                    <i class="fa-solid fa-paper-plane text-brand-greenBright text-xs"></i>
+                    <span>Contact Us</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container (Single Wide Column) -->
+    <main class="max-w-4xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 flex-grow space-y-6">
+        
+        <!-- Hero Banner Section -->
+        <div class="relative rounded-3xl overflow-hidden bg-brand-dark border border-slate-800 shadow-xl">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=80" alt="Home Exterior" class="w-full h-48 sm:h-64 object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent"></div>
+            
+            <div class="absolute inset-0 p-6 sm:p-8 lg:p-10 flex flex-col justify-center">
+                <div class="max-w-xl">
+                    <h2 class="text-xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight uppercase leading-tight">
+                        Awnings, Screen Rooms, <br><span class="text-brand-greenBright">& All Siding Needs.</span>
+                    </h2>
+                    <p class="text-xs sm:text-sm font-medium text-slate-300 mt-2 leading-relaxed max-w-lg hidden sm:block">
+                        Proudly serving our surrounding communities with quality repairs you can count on. No job is too big or small.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust Features Bar (Muted Green Box) -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="bg-emerald-50/70 rounded-2xl p-4 border border-emerald-100 shadow-sm flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-emerald-100 text-brand-green flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-shield-halved text-sm"></i>
+                </div>
+                <div>
+                    <h4 class="text-xs font-black text-brand-dark uppercase">Licensed & Insured</h4>
+                    <p class="text-[10px] text-brand-muted font-medium">Professional peace of mind</p>
+                </div>
+            </div>
+
+            <div class="bg-emerald-50/70 rounded-2xl p-4 border border-emerald-100 shadow-sm flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-emerald-100 text-brand-green flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-handshake-angle text-sm"></i>
+                </div>
+                <div>
+                    <h4 class="text-xs font-black text-brand-dark uppercase">Free Estimates</h4>
+                    <p class="text-[10px] text-brand-muted font-medium">Honest, upfront pricing</p>
+                </div>
+            </div>
+
+            <div class="bg-emerald-50/70 rounded-2xl p-4 border border-emerald-100 shadow-sm flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-emerald-100 text-brand-green flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-star text-sm"></i>
+                </div>
+                <div>
+                    <h4 class="text-xs font-black text-brand-dark uppercase">Top-Tier Quality</h4>
+                    <p class="text-[10px] text-brand-muted font-medium">Built to last through seasons</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Core Specializations Box (Muted Blue Box) -->
+        <div class="bg-blue-50/60 rounded-3xl p-5 sm:p-6 border border-blue-100 shadow-sm">
+            <h3 class="text-xs font-black uppercase tracking-widest text-brand-blue mb-4">Our Specializations</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="p-3.5 rounded-2xl bg-white border border-blue-100 flex items-center gap-3 shadow-xs">
+                    <div class="w-9 h-9 rounded-xl bg-brand-blue text-white flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-house text-xs"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-extrabold text-brand-dark">Siding</h4>
+                        <p class="text-[10px] text-brand-muted font-medium">Install & repair</p>
+                    </div>
+                </div>
+
+                <div class="p-3.5 rounded-2xl bg-white border border-blue-100 flex items-center gap-3 shadow-xs">
+                    <div class="w-9 h-9 rounded-xl bg-brand-blue text-white flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-border-all text-xs"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-extrabold text-brand-dark">Screen Rooms</h4>
+                        <p class="text-[10px] text-brand-muted font-medium">Custom enclosures</p>
+                    </div>
+                </div>
+
+                <div class="p-3.5 rounded-2xl bg-white border border-blue-100 flex items-center gap-3 shadow-xs">
+                    <div class="w-9 h-9 rounded-xl bg-brand-blue text-white flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-umbrella-beach text-xs"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-extrabold text-brand-dark">Awnings</h4>
+                        <p class="text-[10px] text-brand-muted font-medium">Shade structures</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Portfolio Box (White Card) -->
+        <div class="bg-white rounded-3xl p-5 sm:p-6 border border-brand-border shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="text-sm font-black uppercase tracking-widest text-brand-dark">Project Portfolio</h3>
+                    <p class="text-xs font-medium text-brand-muted">Tap any photo to expand</p>
+                </div>
+                <span class="text-[10px] font-black uppercase bg-emerald-100 text-brand-green px-2.5 py-1 rounded-lg">
+                    Featured Work
+                </span>
+            </div>
+
+            <!-- Responsive Portfolio Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80', 'Siding Installation')" class="group relative rounded-2xl overflow-hidden h-40 bg-brand-dark border border-brand-border cursor-pointer btn-tap shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Siding" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/30 to-transparent flex flex-col justify-end p-3">
+                        <span class="text-[9px] font-bold text-brand-greenBright uppercase tracking-widest">Siding</span>
+                        <span class="text-xs font-black text-white leading-tight truncate">Home Exterior</span>
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=1200&q=80', 'Screen Room Enclosure')" class="group relative rounded-2xl overflow-hidden h-40 bg-brand-dark border border-brand-border cursor-pointer btn-tap shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=600&q=80" alt="Screen Room" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/30 to-transparent flex flex-col justify-end p-3">
+                        <span class="text-[9px] font-bold text-brand-greenBright uppercase tracking-widest">Screen Rooms</span>
+                        <span class="text-xs font-black text-white leading-tight truncate">Patio Enclosure</span>
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80', 'Custom Awning Setup')" class="group relative rounded-2xl overflow-hidden h-40 bg-brand-dark border border-brand-border cursor-pointer btn-tap shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Awning" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/30 to-transparent flex flex-col justify-end p-3">
+                        <span class="text-[9px] font-bold text-brand-greenBright uppercase tracking-widest">Awnings</span>
+                        <span class="text-xs font-black text-white leading-tight truncate">Shade Solution</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section Box (White Card) -->
+        <div id="contact-section" class="bg-white rounded-3xl p-6 sm:p-8 border border-brand-border shadow-sm scroll-mt-28">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+                <div>
+                    <span class="text-[10px] font-black uppercase tracking-widest text-brand-green">Fast Response</span>
+                    <h3 class="text-lg sm:text-xl font-black uppercase tracking-tight text-brand-dark">Get In Touch With Us</h3>
+                </div>
+                <div class="w-10 h-10 rounded-2xl bg-emerald-100 text-brand-green flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-headset text-base"></i>
+                </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-brand-muted mb-6 leading-relaxed">
+                Ready to start your siding, screen room, or awning project? Choose your preferred method below to contact us directly or save our contact information to your device!
+            </p>
+
+            <!-- Direct Action Buttons Stack -->
+            <div class="space-y-3">
+                <a href="tel:3345551234" class="btn-tap w-full py-4 px-5 bg-brand-green hover:bg-emerald-700 text-white font-black rounded-2xl text-xs uppercase tracking-wider transition-all shadow-lg shadow-brand-green/20 flex items-center justify-between">
+                    <span class="flex items-center gap-3">
+                        <i class="fa-solid fa-phone text-sm"></i>
+                        <span>Call (334) 555-1234</span>
+                    </span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+
+                <a href="sms:3345551234?body=Hi%20Pro-Quality%20Siding,%20I%20would%20like%20to%20discuss%20a%20project." class="btn-tap w-full py-4 px-5 bg-brand-blue hover:bg-blue-900 text-white font-black rounded-2xl text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-between">
+                    <span class="flex items-center gap-3">
+                        <i class="fa-solid fa-comment-dots text-sm text-brand-greenBright"></i>
+                        <span>Text Us Directly</span>
+                    </span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+
+                <a href="mailto:contact@proqualitysiding.com?subject=Project%20Inquiry%20-%20Pro-Quality%20Siding" class="btn-tap w-full py-4 px-5 bg-slate-100 hover:bg-slate-200 text-brand-dark border border-brand-border font-black rounded-2xl text-xs uppercase tracking-wider transition-all flex items-center justify-between">
+                    <span class="flex items-center gap-3">
+                        <i class="fa-solid fa-envelope text-sm text-brand-green"></i>
+                        <span>Send Us An Email</span>
+                    </span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+
+                <button onclick="downloadVCard()" class="btn-tap w-full py-4 px-5 bg-slate-100 hover:bg-slate-200 text-brand-dark border border-brand-border font-black rounded-2xl text-xs uppercase tracking-wider transition-all flex items-center justify-between">
+                    <span class="flex items-center gap-3">
+                        <i class="fa-solid fa-address-card text-sm text-brand-green"></i>
+                        <span>Save Contact Card (.vcf)</span>
+                    </span>
+                    <i class="fa-solid fa-download text-xs text-brand-muted"></i>
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-blue border-t border-slate-800 text-white mt-12 py-8 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            <div>
+                <p class="text-xs font-black uppercase tracking-widest text-white">Pro-Quality Siding</p>
+                <p class="text-[10px] text-slate-400 mt-0.5">Awnings, Screen Rooms & Siding</p>
+            </div>
+            <p class="text-[10px] text-slate-500">&copy; 2026 Pro-Quality Siding. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 hidden">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/20 text-white flex items-center justify-center text-lg z-10 hover:bg-white/30 transition-colors">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="max-w-3xl w-full text-center">
+            <img id="lightbox-img" src="" alt="Project View" class="w-full h-auto max-h-[75vh] object-contain rounded-2xl shadow-2xl border border-white/20">
+            <p id="lightbox-caption" class="text-xs font-extrabold uppercase tracking-wider text-white mt-4 px-2"></p>
+        </div>
+    </div>
+
+    <!-- Mobile Fixed Floating Action Bar -->
+    <div class="md:hidden fixed bottom-4 left-4 right-4 z-40 bg-brand-dark/95 backdrop-blur-md border border-slate-800 p-2 rounded-2xl shadow-2xl flex items-center gap-2">
+        <a href="tel:3345551234" class="btn-tap flex-1 py-3 bg-brand-green text-white text-center font-extrabold rounded-xl text-xs uppercase tracking-wider shadow-md">
+            <i class="fa-solid fa-phone mr-1"></i> Call
+        </a>
+        <a href="sms:3345551234?body=Hi%20Pro-Quality%20Siding!" class="btn-tap flex-1 py-3 bg-slate-800 text-white text-center font-extrabold rounded-xl text-xs uppercase tracking-wider border border-slate-700">
+            <i class="fa-solid fa-comment text-brand-greenBright mr-1"></i> Text
+        </a>
+        <a href="#contact-section" class="btn-tap flex-1 py-3 bg-white text-brand-dark text-center font-extrabold rounded-xl text-xs uppercase tracking-wider flex items-center justify-center">
+            Contact
+        </a>
+    </div>
+
+    <!-- JavaScript Handlers -->
+    <script>
+        function showToast(message, iconClass = 'fa-check') {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            const toastIcon = document.getElementById('toast-icon');
+            
+            toastMsg.textContent = message;
+            toastIcon.className = 'fa-solid ' + iconClass + ' text-xs';
+            
+            toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-[-20px]');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-[-20px]');
+            }, 3000);
+        }
+
+        function openLightbox(imgSrc, caption) {
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-img');
+            const cap = document.getElementById('lightbox-caption');
+
+            img.src = imgSrc;
+            cap.textContent = caption;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function downloadVCard() {
+            const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:Pro-Quality Siding\nTEL;TYPE=WORK,VOICE:(334) 555-1234\nEMAIL:contact@proqualitysiding.com\nNOTE:Siding, Screen Rooms & Awnings\nEND:VCARD`;
+            const blob = new Blob([vcard], { type: 'text/vcard' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'ProQualitySiding.vcf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            showToast('Contact card downloaded!', 'fa-address-card');
+        }
+    </script>
+</body>
+</html>
